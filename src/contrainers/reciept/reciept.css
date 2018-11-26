@@ -1,0 +1,47 @@
+.recieptCard{
+    max-width: 900px;
+    margin:0 auto;
+    margin-top:15px;
+    padding:20px;
+}
+
+.gridContainer{
+    padding:0px;
+}
+
+.itemRow{
+    border-bottom: 0px;
+}
+.tableCell{
+    border:0 !important;
+}
+
+.quantityTextField{
+    width:50px;
+}
+
+.priceTextCell{
+    padding-right: 5px;
+}
+
+.itemColumn{
+    padding:7px;
+}
+.itemTextField{
+    padding:0px;
+    height:45px;
+    padding:10px;
+}
+
+.deleteIcon{
+    padding:0px !important;
+}
+
+.totalContainer{
+    border-top: 1px solid;
+    text-align: left
+}
+
+.totalContainer table{
+    width:100%;
+}
