@@ -7,27 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Item from './item';
 import { connect } from 'react-redux';
 
-class Reciept extends Component {
+export class Reciept extends Component {
     
-    constructor(props){
-        super(props);
-        this.state = {
-            items:[],
-            lastProductId:0,
-            total:0
-        }
-    }
-    onChange = (edittedItem)=>{
-        // let items = this.state.items.map((item)=>{
-        //     if(item.id === edittedItem.id){
-        //         return edittedItem;
-        //     }
-        //     return item;
-        // });
-        // this.setState({items}, ()=>{
-        //     this.calculateTotal();
-        // });
-    }
 
     calculateWithTaxes = () =>{
         return Math.round(this.props.total*1.05* 100) / 100;
@@ -48,11 +29,9 @@ class Reciept extends Component {
             <Grid item xs={1}>  </Grid> 
         </Grid>
         {items.map((item, index)=>{
-            return (<Item 
-                key={index}
+            return (<Item
+                key={`item-${index}`}
                 {...item}
-                onDelete={this.onDelete} 
-                onChange={this.onChange}
                 />);
         })}
 

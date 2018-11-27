@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header title="IT Glue reciept challenge"/>
-        <Reciept/>
+        <Header id="navBar" title="IT Glue reciept challenge"/>
+        <Reciept id="reciept"/>
       </div>
     );
   }

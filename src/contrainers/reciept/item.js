@@ -10,7 +10,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 
-class Item extends Component {
+export class Item extends Component {
 
   constructor(props){
     super();
@@ -62,7 +62,6 @@ class Item extends Component {
       }
     }else{
       //Edit the data 
-      debugger
         this.props.editItem(newItem)
     }
   }
@@ -91,11 +90,13 @@ class Item extends Component {
   }
 
   render() {
+
     const showDeleteButton = (
       (this.state.name.length !== 0) && 
       (this.state.price) > 0 && 
       (this.state.quantity > 0) &&
        !this.props.itemAdd);
+       console.log(showDeleteButton);
     return (
       <Grid container id="itemContainer">
         <Grid className="itemColumn" item xs={6}> 
@@ -142,7 +143,7 @@ class Item extends Component {
         </Grid>
         <Grid id="deleteContainer" className="itemColumn" item xs={1}>  
           {showDeleteButton && 
-          <IconButton onClick={this.onDelete} className="deleteIcon" aria-label="Delete">
+          <IconButton onClick={this.onDelete} id="iconButton" className="deleteIcon" aria-label="Delete">
                   <DeleteIcon />
             </IconButton>}
         </Grid>

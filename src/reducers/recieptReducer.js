@@ -6,10 +6,11 @@ const defaultState = {
 }
 export default function recieptReducer(state=defaultState, action){
     const { type, payload } = action;
+    let total;
     switch(type){
         case ADD_ITEM:
             let item = setId(state, payload);
-            let total = calculateTotal([...state.items, item]);
+            total = calculateTotal([...state.items, item]);
             return {
                 total,
                 items: [...state.items, item]
@@ -52,8 +53,8 @@ function calculateTotal(items){
     let totalOfItems = items.map((item)=>{
         return (item.price*item.quantity);
     });
-    
     let total = totalOfItems.reduce((total, num)=>(total+num),0);
+    
     return total;
 }
 
