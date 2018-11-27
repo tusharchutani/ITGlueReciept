@@ -111,7 +111,7 @@ export class Item extends Component {
       <Grid container id="itemContainer">
         <Grid className="itemColumn" item xs={6}> 
           <TextField           
-          variant="outlined" 
+          fullWidth
           className="itemTextField" 
           value={this.state.name}
           onChange={this.handleNameChange}
@@ -122,27 +122,27 @@ export class Item extends Component {
         <Grid
           id="priceColumn"
           className="itemColumn" item xs={2}> 
-          <TextField 
-          id="priceTextField"
-          variant="outlined"
-          className="itemTextField"
-          value={this.state.price}
-          onChange={this.handlePriceChange}
-          onBlur={this.addItem}
-          min="0"
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-          }}
-          /> 
+          <TextField
+              onChange={this.handlePriceChange}
+              onBlur={this.addItem}
+              value={this.state.price}
+              // min="0"
+              className="itemTextField"
+              type="number" 
+              label="price"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
+              /> 
          </Grid>
         <Grid className="itemColumn" item xs={2}> 
           <TextField
             id="itemQty" 
             onChange={this.handleQtyChange}
             onBlur={this.addItem}
-            variant="outlined"
+            // variant="outlined"
             value={this.state.quantity}
-            min="0"
+            // min="0"
             className="itemTextField"
             type="number" 
             label="Qty"/> 
