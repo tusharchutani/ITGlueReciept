@@ -32,7 +32,6 @@ describe('<Reciept>', ()=> {
             let wrapper =  shallow(<Reciept items={items}/>);
             for(let i = 0; i < items.length; i++){
                 let item = wrapper.find({id:i});
-                // console.debug(items[i].debug());
                 expect(item.props('name').name).toEqual(items[i].name);
                 expect(item.props('price').price).toEqual(items[i].price);
                 expect(item.props('quantity').quantity).toEqual(items[i].quantity);

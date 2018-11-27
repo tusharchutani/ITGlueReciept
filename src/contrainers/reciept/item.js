@@ -41,7 +41,20 @@ export class Item extends Component {
 }
 
   handlChange = () =>{
-    
+    const newItem = {
+      id: this.props.id,
+      name: this.state.name,
+      price: this.state.price,
+      quantity: this.state.quantity
+    }
+    if(this.props.itemAdd){
+      setTimeout(()=>{this.addItem()},1500);
+    }else{
+      this.props.editItem(newItem)
+    }
+  }
+
+  addItem = () => {
     const newItem = {
       id: this.props.id,
       name: this.state.name,
@@ -60,9 +73,6 @@ export class Item extends Component {
           quantity:0
         });
       }
-    }else{
-      //Edit the data 
-        this.props.editItem(newItem)
     }
   }
 
@@ -96,7 +106,7 @@ export class Item extends Component {
       (this.state.price) > 0 && 
       (this.state.quantity > 0) &&
        !this.props.itemAdd);
-       console.log(showDeleteButton);
+
     return (
       <Grid container id="itemContainer">
         <Grid className="itemColumn" item xs={6}> 
@@ -105,7 +115,7 @@ export class Item extends Component {
           className="itemTextField" 
           value={this.state.name}
           onChange={this.handleNameChange}
-          // onBlur={this.handlChange}
+          onBlur={this.addItem}
           id="Name" 
           label="Name"/> 
         </Grid>
@@ -118,7 +128,7 @@ export class Item extends Component {
           className="itemTextField"
           value={this.state.price}
           onChange={this.handlePriceChange}
-          // onBlur={this.handlChange}
+          onBlur={this.addItem}
           type="number" 
           min="0"
           InputProps={{
@@ -130,7 +140,7 @@ export class Item extends Component {
           <TextField
             id="itemQty" 
             onChange={this.handleQtyChange}
-            // onBlur={this.handlChange}
+            onBlur={this.addItem}
             variant="outlined"
             value={this.state.quantity}
             min="0"
