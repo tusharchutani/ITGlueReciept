@@ -48,7 +48,7 @@ export class Item extends Component {
       quantity: this.state.quantity
     }
     if(this.props.itemAdd){
-      setTimeout(()=>{this.addItem()},1500);
+      setTimeout(()=>{this.addItem()},500);
     }else{
       this.props.editItem(newItem)
     }
