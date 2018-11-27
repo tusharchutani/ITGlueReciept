@@ -110,9 +110,9 @@ export class Item extends Component {
     return (
       <Grid container id="itemContainer">
         <Grid className="itemColumn" item xs={6}> 
-          <TextField           
-          fullWidth
+          <TextField
           className="itemTextField" 
+          fullWidth
           value={this.state.name}
           onChange={this.handleNameChange}
           onBlur={this.addItem}
@@ -125,8 +125,8 @@ export class Item extends Component {
           <TextField
               onChange={this.handlePriceChange}
               onBlur={this.addItem}
+              fullWidth
               value={this.state.price}
-              // min="0"
               className="itemTextField"
               type="number" 
               label="price"
@@ -138,21 +138,22 @@ export class Item extends Component {
         <Grid className="itemColumn" item xs={2}> 
           <TextField
             id="itemQty" 
+            fullWidth
             onChange={this.handleQtyChange}
             onBlur={this.addItem}
-            // variant="outlined"
             value={this.state.quantity}
-            // min="0"
             className="itemTextField"
             type="number" 
             label="Qty"/> 
         </Grid>
-        <Grid className="itemColumn" item xs={1}>  
-          ${this.calulatePrice()}
+        <Grid className="itemColumn" item xs={1}>
+          <div className="totalItemPriceContainer">
+            ${this.calulatePrice()}
+          </div>
         </Grid>
         <Grid id="deleteContainer" className="itemColumn" item xs={1}>  
           {showDeleteButton && 
-          <IconButton onClick={this.onDelete} id="iconButton" className="deleteIcon" aria-label="Delete">
+          <IconButton onClick={this.onDelete} id="iconButton" aria-label="Delete">
                   <DeleteIcon />
             </IconButton>}
         </Grid>

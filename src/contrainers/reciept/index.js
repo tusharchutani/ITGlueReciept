@@ -39,7 +39,8 @@ export class Reciept extends Component {
 
         <Grid id="titleContainer" container>
             <Grid item xs={8}> </Grid>
-            <Grid className="totalContainer" item xs={4}> 
+            <Grid item xs={4}> 
+            <div className="totalContainer">
                 <table>
                     <tbody>
                     <tr>
@@ -56,6 +57,7 @@ export class Reciept extends Component {
                     </tr>
                     </tbody>
                 </table>
+                </div>
             </Grid>
         </Grid>
 

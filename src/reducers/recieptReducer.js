@@ -60,7 +60,7 @@ function calculateTotal(items){
 
 function updatedListOfItems(items, toUpdate){
     let updatedItems = items.map((item)=>{
-        if(item.id == toUpdate.id){
+        if(item.id === toUpdate.id){
             return toUpdate
         }
         return item

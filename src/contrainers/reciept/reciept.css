@@ -28,21 +28,23 @@
     padding:3px;
 }
 .itemTextField{
+    width:50%;
     padding:0px;
     height:45px;
     padding:10px;
 }
 
 
-.deleteIcon{
-    padding:0px !important;
-}
-
 .totalContainer{
     border-top: 1px solid;
-    text-align: left
+    text-align: left;
+    margin-top:30px;
 }
 
 .totalContainer table{
     width:100%;
+}
+
+.totalItemPriceContainer{
+    padding-top:19px;
 }
