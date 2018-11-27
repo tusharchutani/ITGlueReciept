@@ -2,7 +2,7 @@
     max-width: 900px;
     margin:0 auto;
     margin-top:15px;
-    padding:20px;
+    padding:15px;
 }
 
 .gridContainer{
@@ -17,7 +17,7 @@
 }
 
 .quantityTextField{
-    width:50px;
+    min-width:50px;
 }
 
 .priceTextCell{
@@ -25,13 +25,14 @@
 }
 
 .itemColumn{
-    padding:7px;
+    padding:3px;
 }
 .itemTextField{
     padding:0px;
     height:45px;
     padding:10px;
 }
+
 
 .deleteIcon{
     padding:0px !important;

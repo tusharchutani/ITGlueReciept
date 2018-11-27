@@ -129,7 +129,6 @@ export class Item extends Component {
           value={this.state.price}
           onChange={this.handlePriceChange}
           onBlur={this.addItem}
-          type="number" 
           min="0"
           InputProps={{
             startAdornment: <InputAdornment position="start">$</InputAdornment>,
