@@ -5,11 +5,12 @@ import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Item from './item';
+import { connect } from 'react-redux';
 
 class Reciept extends Component {
     
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             items:[],
             lastProductId:0,
@@ -17,60 +18,25 @@ class Reciept extends Component {
         }
     }
     onChange = (edittedItem)=>{
-        console.log("Eddited item is ");
-        console.log(edittedItem);
-        let items = this.state.items.map((item)=>{
-            if(item.id === edittedItem.id){
-                return edittedItem;
-            }
-            return item;
-        });
-        this.setState({items}, ()=>{
-            this.calculateTotal();
-        });
-    }
-
-    onDelete = (id) => {
-        const items = this.state.items.filter((item)=>{
-            return item.id !== id;
-        });
-        this.setState({items}, ()=>{
-            this.calculateTotal();
-        });        
-    }
-    addItem = (item) =>{
-        let items = this.state.items;
-        let idOfNewItem;
-        if(items.length === 0){
-            idOfNewItem = 0;
-        }else{
-            idOfNewItem = this.state.items.slice(-1)[0].id+1;
-        }
-        
-        item.id = idOfNewItem;
-        items.push(item);
-        this.setState({items});
-        this.calculateTotal();
-    }
-
-    calculateTotal = () =>{
-        let totalOfItems = this.state.items.map((item)=>{
-            console.log("The price is "+item.price + " Q:"+item.quantity);
-            return (item.price*item.quantity);
-        });
-        
-        let total = totalOfItems.reduce((total, num)=>(total+num));
-        
-        this.setState({total});
+        // let items = this.state.items.map((item)=>{
+        //     if(item.id === edittedItem.id){
+        //         return edittedItem;
+        //     }
+        //     return item;
+        // });
+        // this.setState({items}, ()=>{
+        //     this.calculateTotal();
+        // });
     }
 
     calculateWithTaxes = () =>{
-        return Math.round(this.state.total*1.05* 100) / 100;
+        return Math.round(this.props.total*1.05* 100) / 100;
     }
     calculateTax = () =>{
-        return Math.round(this.state.total * 0.05 * 100)/100;
+        return Math.round(this.props.total * 0.05 * 100)/100;
     }
   render() {
+      const { items } = this.props;
     return (
         <Card className="recieptCard">
             <div>
@@ -81,7 +47,7 @@ class Reciept extends Component {
             <Grid item xs={1}> <h5> Total </h5> </Grid>
             <Grid item xs={1}>  </Grid> 
         </Grid>
-        {this.state.items.map((item, index)=>{
+        {items.map((item, index)=>{
             return (<Item 
                 key={index}
                 {...item}
@@ -90,7 +56,7 @@ class Reciept extends Component {
                 />);
         })}
 
-        <Item onAddItem={this.addItem} itemAdd={true} />      
+        <Item itemAdd={true} />      
 
         <Grid id="titleContainer" container>
             <Grid item xs={8}> </Grid>
@@ -99,7 +65,7 @@ class Reciept extends Component {
                     <tbody>
                     <tr>
                         <td>Subtotal</td>
-                        <td>${this.state.total}</td>
+                        <td>${this.props.total}</td>
                     </tr>
                     <tr>
                         <td>Tax(5%)</td>
@@ -120,5 +86,14 @@ class Reciept extends Component {
   }
 }
 
+const mapStateToProps = state =>{
 
-export default Reciept;
+    return {
+        items: state.reciept.items, 
+        total: state.reciept.total
+    };
+}
+
+
+
+export default connect(mapStateToProps)(Reciept);

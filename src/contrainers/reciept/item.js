@@ -1,12 +1,14 @@
 import './reciept.css';
 
 import React, { Component } from 'react';
+import { add_item, delete_item, edit_item } from '../../actions';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
+import { connect } from 'react-redux';
 
 class Item extends Component {
 
@@ -50,7 +52,7 @@ class Item extends Component {
       const { price, name, quantity} = this.state;
       //Do nothing if price and quantity is 0 and there is no name
       if(price > 0 && quantity > 0 && name !== ''){
-        this.props.onAddItem(newItem);
+        this.props.addItem(newItem);
         //reset it back
         this.setState({
           name:'',
@@ -60,7 +62,8 @@ class Item extends Component {
       }
     }else{
       //Edit the data 
-        this.props.onChange(newItem)
+      debugger
+        this.props.editItem(newItem)
     }
   }
 
@@ -75,7 +78,7 @@ class Item extends Component {
   }
 
   onDelete = () =>{
-    this.props.onDelete(this.props.id);
+    this.props.deleteItem(this.props.id);
   }
 
   calulatePrice = () =>{
@@ -154,4 +157,10 @@ Item.defaultProps = {
   quantity:0
 }
 
-export default Item;
+const mapActionsToProps = {
+  addItem:add_item,
+  deleteItem: delete_item,
+  editItem: edit_item
+}
+
+export default connect(()=>{ return {}; }, mapActionsToProps)(Item);
