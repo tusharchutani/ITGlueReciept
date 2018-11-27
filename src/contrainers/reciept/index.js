@@ -21,13 +21,15 @@ export class Reciept extends Component {
     return (
         <Card className="recieptCard">
             <div>
-        <Grid id="titleContainer" container>
-            <Grid item xs={6}> <h5> Item </h5> </Grid>
-            <Grid item xs={2}> <h5> Price </h5> </Grid>
-            <Grid item xs={2}> <h5> Quantity</h5> </Grid>
-            <Grid item xs={1}> <h5> Total </h5> </Grid>
-            <Grid item xs={1}>  </Grid> 
-        </Grid>
+        <div className="titleContainer">
+            <Grid container>
+                    <Grid item xs={6}> <h5> Item </h5> </Grid>
+                    <Grid item xs={2}> <h5> Price </h5> </Grid>
+                    <Grid item xs={2}> <h5> Quantity</h5> </Grid>
+                    <Grid item xs={1}> <h5> Total </h5> </Grid>
+                    <Grid item xs={1}>  </Grid> 
+            </Grid>
+        </div>
         {items.map((item, index)=>{
             return (<Item
                 key={`item-${index}`}

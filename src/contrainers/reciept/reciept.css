@@ -20,6 +20,11 @@
     min-width:50px;
 }
 
+.titleContainer{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
 .priceTextCell{
     padding-right: 5px;
 }
